@@ -125,6 +125,8 @@ tunit [container] [folder] [init] # run or init unit tests in given container fo
 
 I recommend to check out each Totara Learn version in a different subfolder below the folder LOCAL_SRC defined in .env. This enables you to access different versions without having to switch branches all the time.
 
+You may need to log in to `tbash` (e.g.; `tbash php=7.2`) and create directories for your multiple install locations. If you do this, you will also need to set the correct permissions on the directories you create (e.g.; `chown www-data:www-data /var/www/totara/data/er13_custom.pgsql`).
+
 This is just a suggestion which worked fine for me. There are different ways to handle this and at the end you need to decide yourself how to do it.
 
 ### Config & Database
