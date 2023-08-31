@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# start SQL Server, start the script to create the DB and import the data, start the app
-/opt/mssql/bin/sqlservr & /custom/setup.sh & tail -f /dev/null
+# Start the script to create the DB and user
+/usr/config/configure-db.sh &
+
+# Start SQL Server
+/opt/mssql/bin/sqlservr
