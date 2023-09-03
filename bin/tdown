@@ -6,8 +6,3 @@ project_path="$( cd $script_path && cd ..; pwd -P )"
 export $(grep -E -v '^#' $project_path/.env | xargs)
 
 $script_path/tdocker down
-
-# stop mutagen if it is running
-if [[ "$USE_MUTAGEN" == "1" || -f "$project_path/.use-mutagen" ]]; then
-    mutagen sync pause totara
-fi

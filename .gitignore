@@ -1,5 +1,3 @@
-.use-mutagen
-mutagen.yml.lock
 .env
 !.gitkeep
 /cron.d/*.cron

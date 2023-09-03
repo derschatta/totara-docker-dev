@@ -30,24 +30,4 @@ for container in "${containers[@]}"; do
     fi
 done
 
-# Always start up the sync container for mutagen
-if [[ "$USE_MUTAGEN" == "1" || -f "$project_path/.use-mutagen" ]]; then
-    containers_to_start+=("sync")
-fi
-
 $script_path/tdocker up -d "${containers_to_start[@]}"
-
-# if mutagen should be used make sure it's started
-if [[ "$USE_MUTAGEN" == "1" || -f "$project_path/.use-mutagen" ]]; then
-    # check if there's already a session
-    mutagen sync list | grep "$REMOTE_SRC" &> /dev/null
-
-    if [ $? != 0 ]; then
-        mutagen sync create \
-            -c $project_path/mutagen.yml \
-            -n totara \
-            $LOCAL_SRC docker://totara_sync$REMOTE_SRC
-    else
-        mutagen sync resume totara
-    fi
-fi
